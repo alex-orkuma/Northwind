@@ -8,7 +8,7 @@ namespace Northwind.WebApi.Repositories;
 public class CustomerRepository : ICustomerRepository
 {
     // use a static thread-safe dictionary field to cache the customers
-    public static ConcurrentDictionary<string, Customer> customersCache;
+    public static ConcurrentDictionary<string, Customer>? customersCache;
 
     // use an instance data context field because it should not be
     // cached due to their internal caching
@@ -54,7 +54,7 @@ public class CustomerRepository : ICustomerRepository
         return Task.FromResult(customersCache is null ? Enumerable.Empty<Customer>() : customersCache.Values);
     }
 
-    public Task<Customer> RetrieveAsync(string id)
+    public Task<Customer?> RetrieveAsync(string id)
     {
         // for perfomance, get from cache
         id = id.ToUpper();

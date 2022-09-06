@@ -21,7 +21,7 @@ public class CustomersController : ControllerBase
     // this will always return a list of customers (but it might be empty)
     [HttpGet]
     [ProducesResponseType(200, Type = typeof(IEnumerable<Customer>))]
-    public async Task<IEnumerable<Customer>> GetCustomers(string? country)
+    public async Task<IEnumerable<Customer?>> GetCustomers(string? country)
     {
         if (string.IsNullOrWhiteSpace(country))
         {
